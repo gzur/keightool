@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keightool
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: keightool
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: keightool
+    spec:
+      containers:
+      - image: gzur/keightool
+        imagePullPolicy: Always
+        name: keightool
+        command:
+          - bash 
+          - "-c"
+        args:
+          - echo "Shell into me already"; sleep infinity
