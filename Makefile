@@ -14,3 +14,15 @@ docker.push:
 
 
 release: docker.build docker.push
+
+k8s.install:
+	$(eval CURRENT_NAMESPACE := $(shell kubectl config view -o jsonpath='{.contexts[].context.namespace}'))
+
+	@echo "## Installing keightool into the \"$(CURRENT_NAMESPACE)\" namespace."
+	@kubectl apply -f yaml/
+
+k8s.uninstall:
+	$(eval CURRENT_NAMESPACE := $(shell kubectl config view -o jsonpath='{.contexts[].context.namespace}'))
+	@echo "## Removing keightool from the \"$(CURRENT_NAMESPACE)\" namespace."
+	@kubectl delete -f yaml/
+
