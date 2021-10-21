@@ -21,3 +21,10 @@ spec:
           - "-c"
         args:
           - echo "Shell into me already"; sleep infinity
+        resources:  
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
