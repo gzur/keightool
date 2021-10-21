@@ -20,4 +20,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push
         id: release
-        run: make release
+        run: ls -latr && make release
