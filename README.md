@@ -8,10 +8,10 @@ Image is available on Docker Hub as [gzur/keightool](https://hub.docker.com/r/gz
 
 
 ## Contributing
-* Make a change
-* Bump the [VERSION](./VERSION) file
-* `make tag`
-* `make release`
+1. Make a change
+1. Bump the [VERSION](./VERSION) file
+1. Commit changes
+1. `make release`
 
 ## Changelist
 

@@ -13,8 +13,7 @@ docker.push:
 	@docker push "$(DOCKER_REPO):latest"
 
 
-release: docker.build docker.push
-
+# k8s stuff
 k8s.install:
 	$(eval CURRENT_NAMESPACE := $(shell kubectl config view -o jsonpath='{.contexts[].context.namespace}'))
 
@@ -26,6 +25,10 @@ k8s.uninstall:
 	@echo "## Removing keightool from the \"$(CURRENT_NAMESPACE)\" namespace."
 	@kubectl delete -f yaml/
 
+
+# release stuff
+release: ##  Docker build / push is handled by Github Actions
+	git push --tags
 
 tag:
 	git tag "v$(VERSION)"
