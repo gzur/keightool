@@ -2,6 +2,10 @@ FROM ubuntu:xenial
 
 # TODO: Fold the update with the install once this has stabilized
 RUN apt-get update -y  
-RUN apt-get install -y curl dnsutils netcat
+RUN apt-get install -y \
+   curl \
+   dnsutils \
+   jq \
+   netcat
 
 CMD [ "sleep", "infinity" ]  # Overridable in yaml

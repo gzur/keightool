@@ -3,7 +3,7 @@ VERSION := $(shell cat VERSION)
 DOCKER_REPO := "gzur/keightool"
 
 docker.build:
-	@docker build -t $(DOCKER_REPO):$(VERSION) .
+	docker build -t $(DOCKER_REPO):$(VERSION) .
 
 docker.push:
 	@echo "## Pushing $(DOCKER_REPO):$(VERSION)"
@@ -26,3 +26,6 @@ k8s.uninstall:
 	@echo "## Removing keightool from the \"$(CURRENT_NAMESPACE)\" namespace."
 	@kubectl delete -f yaml/
 
+
+tag:
+	git tag "v$(VERSION)"
