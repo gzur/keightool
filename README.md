@@ -19,3 +19,4 @@ Image is available on Docker Hub as [gzur/keightool](https://hub.docker.com/r/gz
 * 0.2.0 - Add `dnsutils`, for `nslookup` et. al
 * 0.3.0 - Add netcat
 * 0.4.0 - Add jq
+* 1.0.0 - Make fish the default shell

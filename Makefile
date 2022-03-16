@@ -12,6 +12,8 @@ docker.push:
 	@docker tag "$(DOCKER_REPO):$(VERSION)" "$(DOCKER_REPO):latest"
 	@docker push "$(DOCKER_REPO):latest"
 
+docker.shell: 
+	docker run -it  $(DOCKER_REPO):$(VERSION) bash
 
 # k8s stuff
 k8s.install:
@@ -27,7 +29,10 @@ k8s.uninstall:
 
 
 # release stuff
-release: ##  Docker build / push is handled by Github Actions
+release: docker.build docker.push
+
+
+ship: tag ##  Docker build / push is handled by Github Actions
 	git push --tags
 
 tag:
