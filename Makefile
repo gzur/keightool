@@ -13,7 +13,7 @@ docker.push:
 	@docker push "$(DOCKER_REPO):latest"
 
 docker.shell: 
-	docker run -it  $(DOCKER_REPO):$(VERSION) bash
+	docker run -it  $(DOCKER_REPO):$(VERSION) fish
 
 # k8s stuff
 k8s.install:

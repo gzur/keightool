@@ -16,8 +16,6 @@ RUN chsh -s /usr/bin/fish
 ENV SHELL /usr/bin/fish
 ENV LANG=C.UTF-8 LANGUAGE=C.UTF-8 LC_ALL=C.UTF-8
 
-ENTRYPOINT [ "fish" ]
-
 RUN apt-get update --quiet -y  
 RUN apt-get install --quiet -y \
    curl \
@@ -28,4 +26,5 @@ RUN apt-get install --quiet -y \
 RUN alias k=kubectl
 RUN alias ll="ls -latr"
 
+COPY VERSION /VERSION
 CMD [ "sleep", "infinity" ]  # Overridable in yaml
