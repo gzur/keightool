@@ -4,7 +4,10 @@ FROM ubuntu:xenial
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update --quiet && \
-    apt-get install --quiet --yes software-properties-common openssh-client git
+    apt-get install --quiet --yes \
+        software-properties-common \
+        openssh-client \
+        git
 RUN add-apt-repository --yes ppa:fish-shell/release-3 && \
     apt-get update --quiet -y && \
     apt-get install --quiet --yes fish=3.4.0-1~xenial
@@ -18,10 +21,11 @@ ENV LANG=C.UTF-8 LANGUAGE=C.UTF-8 LC_ALL=C.UTF-8
 
 RUN apt-get update --quiet -y  
 RUN apt-get install --quiet -y \
-   curl \
-   dnsutils \
-   jq \
-   netcat
+        curl \
+        dnsutils \
+        jq \
+        netcat \        
+        tcpdump 
 
 RUN alias k=kubectl
 RUN alias ll="ls -latr"
