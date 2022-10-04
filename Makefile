@@ -28,7 +28,7 @@ k8s.uninstall:
 	@kubectl delete -f yaml/
 
 
-# release stuff
+# release stuff for CI
 release: docker.build docker.push
 
 
