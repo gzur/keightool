@@ -2,15 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: keightool
+  labels:
+    app.kubernetes.io/name: keightool
+    app: keightool
 spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: keightool
+      app: keightool
+      
   replicas: 1
   template:
     metadata:
       labels:
         app.kubernetes.io/name: keightool
+        app: keightool
+
     spec:
       containers:
       - image: gzur/keightool
