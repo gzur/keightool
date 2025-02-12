@@ -2,6 +2,8 @@
 VERSION := $(shell cat VERSION)
 DOCKER_REPO := "gzur/keightool"
 
+# k8s stuff - this is here to make it easier to override the image
+IMAGE ?= $(DOCKER_REPO)
 docker.build:
 	docker build -t $(DOCKER_REPO):$(VERSION) .
 
@@ -15,11 +17,12 @@ docker.push:
 docker.shell: 
 	docker run -it  $(DOCKER_REPO):$(VERSION) fish
 
-# k8s stuff
 k8s.up:
 	$(eval CURRENT_NAMESPACE := $(shell kubectl config view --minify -o jsonpath='{..namespace}'))
+	
 	@echo "## Installing keightool into the \"$(CURRENT_NAMESPACE)\" namespace."
-	@kubectl apply -f yaml/
+	@echo "## keightool is running the $(IMAGE) image. Overide by supplying `IMAGE=your-image` to the make command"
+	cat yaml/* | sed 's~gzur/keightool~$(IMAGE)~g' | kubectl apply -n $(CURRENT_NAMESPACE) -f -
 
 k8s.down:
 	$(eval CURRENT_NAMESPACE := $(shell kubectl config view --minify -o jsonpath='{..namespace}'))
