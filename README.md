@@ -4,13 +4,15 @@ A [Container Image](./Dockerfile) and [YAML](./yaml/keightool.yaml) to mess arou
 
 ## What's included?
 
-* `git`
-* `fish` shell
-* `openssh-client`
 * `curl`
 * `dnsutils`
+* `git`
 * `jq`
 * `netcat`
+* `openssh-client`
+* `postgresql-client`
+* `python 3.11`
+* `redis-tools`
 * `tcpdump`
 
 The most up-to-date list can be found inside [the Dockerfile](./Dockerfile#L23-27)
